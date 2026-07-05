@@ -7,7 +7,7 @@ class Settings:
     APP_VERSION: str = "1.0.0"
     DEBUG: bool = os.getenv("DEBUG", "false").lower() == "true"
 
-    IS_VERCEL: bool = os.getenv("VERCEL", "false").lower() == "true"
+    IS_VERCEL: bool = os.getenv("VERCEL") is not None
     BASE_DIR: Path = Path(__file__).resolve().parent.parent.parent
     
     # Use /tmp on Vercel since the rest of the filesystem is read-only
