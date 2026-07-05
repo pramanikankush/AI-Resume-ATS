@@ -1,3 +1,7 @@
+import sys
+from pathlib import Path
+sys.path.insert(0, str(Path(__file__).resolve().parent.parent))
+
 import streamlit as st
 from frontend.utils.styling import inject_design_css
 from frontend.utils.api_client import health_check
