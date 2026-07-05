@@ -2,6 +2,18 @@
 
 Production-grade Applicant Tracking System with semantic matching, AI-powered analysis, and an editorial design system.
 
+## Screenshots
+
+### Dashboard
+![Dashboard](docs/images/dashboard.png)
+
+### Upload & Score
+![Upload & Score](docs/images/upload_score.png)
+
+### Batch Processing
+![Batch Processing](docs/images/batch_processing.png)
+
+
 ## Tech Stack
 
 | Layer | Technology |
