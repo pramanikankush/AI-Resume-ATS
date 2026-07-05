@@ -7,11 +7,16 @@ class Settings:
     APP_VERSION: str = "1.0.0"
     DEBUG: bool = os.getenv("DEBUG", "false").lower() == "true"
 
+    IS_VERCEL: bool = os.getenv("VERCEL", "false").lower() == "true"
     BASE_DIR: Path = Path(__file__).resolve().parent.parent.parent
-    UPLOAD_DIR: Path = BASE_DIR / "data" / "uploads"
-    REPORT_DIR: Path = BASE_DIR / "data" / "reports"
-    FAISS_DIR: Path = BASE_DIR / "data" / "faiss_index"
-    LOG_DIR: Path = BASE_DIR / "logs"
+    
+    # Use /tmp on Vercel since the rest of the filesystem is read-only
+    DATA_DIR: Path = Path("/tmp") if IS_VERCEL else BASE_DIR
+
+    UPLOAD_DIR: Path = DATA_DIR / "data" / "uploads"
+    REPORT_DIR: Path = DATA_DIR / "data" / "reports"
+    FAISS_DIR: Path = DATA_DIR / "data" / "faiss_index"
+    LOG_DIR: Path = DATA_DIR / "logs"
 
     UPLOAD_DIR.mkdir(parents=True, exist_ok=True)
     REPORT_DIR.mkdir(parents=True, exist_ok=True)
