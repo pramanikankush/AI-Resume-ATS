@@ -4,6 +4,7 @@ sys.path.insert(0, str(Path(__file__).resolve().parent.parent))
 
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
+from fastapi.responses import RedirectResponse
 from backend.core.config import settings
 from backend.api.routes import router
 from backend.utils.logger import logger
@@ -19,6 +20,11 @@ app.add_middleware(
 )
 
 app.include_router(router)
+
+
+@app.get("/")
+def read_root():
+    return RedirectResponse(url="/docs")
 
 
 @app.get("/health")
